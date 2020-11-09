@@ -1,36 +1,55 @@
-<?php
-
-class a{
-    
+<?php 
+class A
+{
+    protected $x;   
+    function solve($a,$b){
+        if($a==0){
+            return false;
+            
+        }
+        $x = -$b/$a;
+        $this->x = $x;
+        return $x;
+    }
 }
 
-class b extends a
+class B extends A 
 {
-    public function __construct($b)
-    {
-        $this->b = $b;
+    function solve2($a,$b,$c){
+        $d = $this->discriminant($a,$b,$c); 
+        if($a==0){
+            return $this->x = $this->solve($b,$c);
+            
+        }
+        if ($d<0){
+            
+            $this->x = false;
+            return "Дискриминант меньше нуля, решений нет.";
+            
+        }
         
+        $d = sqrt($d);
+        $x1 = ((-$b) + $d) / (2 * $a);
+        $x2 = ((-$b) - $d) / (2 * $a);
+        
+        if($x1 == $x2){
+            $this->x = $x1;
+            return $x1;
+        }
+            else{
+                $this->x = array($x1,$x2);
+                return  array($x1,$x2);
+                }
     }
     
-    protected $b;  
+    protected function discriminant($a,$b,$c){
+        $d =  $b * $b - 4 * $a * $c;
+        return $d;
+    }   
 }
 
+$a = new A();
+$b = new B();
 
-class c extends b
-{
-    public function __construct($b,$c)
-    {
-        $this->c = $c;
-        parent::__construct($b);
-    }
-    protected $c;
-    
-}
-
-$a1 = new a ();
-$b2 = new b ($a1);
-$c3 = new c ($a1,$b2);
-$b4 = new b ($a1);
-$c5 = new c ($b4,$c3);
-
+print_r($b->solve2(2,5,2)); 
 ?>
