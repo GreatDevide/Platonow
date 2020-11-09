@@ -1,47 +1,36 @@
-<?php
-namespace platonov;
+<?php namespace platonov;
+
 use core\EquationInterface;
 
-class Sqr extends Line implements EquationInterface
-{
-    function solve($a, $b, $c)
-    {
-        $d = $this->discriminant($a, $b, $c);
-        if ($a == 0) {
-            return $this->x = $this->equation($b, $c);
-        }
-        if ($d < 0) {
-            $this->x = false;
-            return false;
-        }
-        $d = sqrt($d);
-        $x1 = ((-$b) + $d) / (2 * $a);
-        $x2 = ((-$b) - $d) / (2 * $a);
-        if ($x1 == $x2) {
-            $this->x = $x1;
-            return $x1;
-        } else {
-            $this->x = array($x1, $x2);
-            return array($x1, $x2);
-        }
-    }
+Class QuEquation extends Equation implements EquationInterface{
+	
+	protected function dis($a, $b, $c){
+		return ($b**2)-4*$a*$c;
+		}
+	
+	public function solve($a, $b, $c){
 
-    protected function discriminant($a, $b, $c)
-    {
-        $d = $b * $b - 4 * $a * $c;
-        return $d;
-    }
+		$x = $this->dis($a, $b, $c);
 
-    /**
-     * @param float $a
-     * @param float $b
-     * @param float $c
-     *
-     * @return array
-     */
-    public function solve($a, $b, $c)
-    {
-        // TODO: Implement solve() method.
-    }
+	    if($a == 0){
+	        return $this->line($b,$c);
+	    }
+        MyLog::log("Определено, что это квадратное уравнение");
+		if ($x > 0){
+		    return $this->X=array(
+		        (-$b+sqrt($x))/(2*$a),
+                (-$b-sqrt($x))/(2*$a)
+		        );
+		}
+		
+		if($x == 0){
+			return $this->X=array(-($b/(2*$a)));
+		}
+
+		throw new PlatonovException("Ошибка: уравнение не имеет корней.");
+		
+	}
+	
 }
+
 ?>
