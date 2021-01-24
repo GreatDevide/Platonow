@@ -1,4 +1,4 @@
-core
+/vendor/
 .DS_Store
 log
 version

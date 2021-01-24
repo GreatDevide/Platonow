@@ -4,14 +4,6 @@ use platonov\MyLog;
 use platonov\PlatonovException;
 use platonov\QuEquation;
 
-include "core/EquationInterface.php";
-include "core/LogAbstract.php";
-include "core/LogInterface.php";
-include "platonov/MyLog.php";
-include "platonov/Equation.php";
-include "platonov/QuEquation.php";
-include "platonov/PlatonovException.php";
-
 ini_set("display_errors", 1);
 error_reporting (-1);
 

@@ -1,0 +1,25 @@
+{
+    "name": "greatdevide/platonow",
+    "type": "project",
+    "authors": [
+        {
+            "name": "platonow",
+            "email": "fin.gin201461@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/rok9ru/trpo-core.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/GreatDevide/Platonow_2.git"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "rok9ru/trpo-core":"^2.0",
+        "greatdevide/platonow_2":"^5.1"
+    }
+}
